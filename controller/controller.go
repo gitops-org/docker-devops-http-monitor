@@ -85,7 +85,7 @@ func CreateRouter(securityConfig *security.Config, enabledMetrics bool) *mux.Rou
 	// SPA
 	router.HandleFunc("/services/{service}", spaHandler).Methods("GET")
 	// Everything else falls back on static content
-	router.PathPrefix("/").Handler(GzipHandler(http.FileServer(http.Dir(staticFolder))))
+	router.PathPrefix("/monitor").Handler(GzipHandler(http.FileServer(http.Dir(staticFolder))))
 	return router
 }
 
